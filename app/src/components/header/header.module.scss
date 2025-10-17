@@ -1,0 +1,68 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+    background: inherit;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--text-color);
+
+        svg {
+            width: 2rem;
+            height: 2rem;
+            color: var(--primary);
+        }
+
+        h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+    }
+
+    nav {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #6b7280;
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+
+            &:hover {
+                color: var(--primary-hover);
+            }
+
+            &.active {
+                color: var(--primary);
+                font-weight: 700;
+            }
+        }
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .avatar {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: var(--radius-full);
+            background-size: cover;
+            background-position: center;
+            border: 1px solid var(--gray-200);
+            background-color: var(--background-color);
+            &:hover {
+                border-color: var(--primary);
+            }
+        }
+    }
+}

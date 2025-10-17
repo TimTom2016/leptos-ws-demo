@@ -1,0 +1,36 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.button-container {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.captcha-container {
+    display: none;
+    margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+@media (min-width: 640px) {
+    .login-form {
+        max-width: 28rem;
+        margin: 0 auto;
+    }
+}

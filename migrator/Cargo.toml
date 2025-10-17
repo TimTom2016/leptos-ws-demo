@@ -1,0 +1,15 @@
+[package]
+name = "migrator"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+sqlx = { workspace = true }
+sqlx_migrator = { workspace = true }
+async-trait.workspace = true
+tokio.workspace = true
+dotenvy.workspace = true
+log.workspace = true
+thiserror.workspace = true
+password-auth = { workspace = true }
+chrono.workspace = true

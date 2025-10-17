@@ -1,0 +1,67 @@
+.chat {
+    --rad: 20px;
+    --rad-sm: 3px;
+    font: 16px/1.5 sans-serif;
+    display: flex;
+    padding: 20px;
+    margin: auto;
+    width: 100%;
+    flex-direction: column-reverse;
+}
+
+.msg {
+    position: relative;
+    max-width: 75%;
+    padding: 7px 15px;
+    margin-bottom: 2px;
+}
+
+.msg.sent {
+    border-radius: var(--rad) var(--rad-sm) var(--rad-sm) var(--rad);
+    background: var(--primary);
+    color: var(--text-on-primary);
+    margin-left: auto;
+}
+
+.msg.rcvd {
+    border-radius: var(--rad-sm) var(--rad) var(--rad) var(--rad-sm);
+    background: var(--secondary);
+    color: var(--text-on-secondary);
+    margin-right: auto;
+}
+
+.msg.sent:first-child,
+.msg.rcvd + .msg.sent {
+    margin-top: 0.5rem;
+    border-top-right-radius: var(--rad);
+}
+
+.msg.rcvd:first-child,
+.msg.sent + .msg.rcvd {
+    margin-top: 0.5rem;
+    border-top-left-radius: var(--rad);
+}
+
+.msg::before {
+    content: attr(data-time);
+    font-size: 0.8rem;
+    position: absolute;
+    bottom: 100%;
+    color: var(--gray-200);
+    white-space: nowrap;
+    display: none;
+}
+
+.msg.sent::before {
+    right: 15px;
+}
+
+.msg.rcvd::before {
+    left: 15px;
+}
+
+.msg:first-child::before,
+.msg.sent + .msg.rcvd::before,
+.msg.rcvd + .msg.sent::before {
+    display: block;
+}

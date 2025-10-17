@@ -1,0 +1,44 @@
+[package]
+name = "api"
+version = "0.1.0"
+edition = "2024"
+
+
+[dependencies]
+leptos.workspace = true
+leptos_axum = { workspace = true, optional = true }
+axum = { workspace = true, optional = true }
+sqlx = { workspace = true, optional = true }
+sqlx_migrator = { workspace = true, optional = true }
+async-trait.workspace = true
+serde.workspace = true
+axum_session_auth = { workspace = true, optional = true }
+axum_session_sqlx = { workspace = true, optional = true }
+axum_session = { workspace = true, optional = true }
+anyhow = { workspace = true, optional = true }
+thiserror = { workspace = true }
+leptos-captcha = { workspace = true, optional = true }
+password-auth = { workspace = true, optional = true }
+uuid = { workspace = true, optional = true }
+futures = { version = "0.3.31", optional = true }
+log.workspace = true
+chrono.workspace = true
+[features]
+default = []
+ssr = [
+    "leptos/ssr",
+    "dep:axum",
+    "dep:sqlx",
+    "dep:sqlx_migrator",
+    "dep:axum_session_auth",
+    "dep:axum_session_sqlx",
+    "dep:axum_session",
+    "dep:anyhow",
+    "dep:leptos_axum",
+    "dep:leptos-captcha",
+    "dep:password-auth",
+    "dep:uuid",
+    "dep:futures",
+]
+hydrate = ["leptos/hydrate"]
+futures = ["dep:futures"]

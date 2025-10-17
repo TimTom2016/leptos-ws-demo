@@ -1,0 +1,102 @@
+/* === Groups Sidebar === */
+.groups {
+    width: 280px;
+    border-right: 1px solid var(--border-color);
+    background: var(--background);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        padding: 1rem 1.25rem;
+        margin: 0;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--gray-200);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* Scrollable list container */
+    .group-list {
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Individual group item */
+    .group {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1.25rem;
+        cursor: pointer;
+        transition:
+            background 0.2s ease,
+            color 0.2s ease;
+        border-left: 3px solid transparent;
+
+        &:hover {
+            background: var(--primary-hover);
+            border-left-color: var(--primary-hover);
+            color: var(--text-on-primary);
+        }
+
+        &.active {
+            background: var(--primary, #007bff);
+            color: var(--text-on-primary);
+            border-left-color: var(--primary, #007bff);
+
+            .details h3,
+            .details p {
+                color: #fff;
+            }
+        }
+
+        img {
+            width: 42px;
+            height: 42px;
+            border-radius: var(--radius-full, 9999px);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+
+            h3 {
+                font-size: 0.95rem;
+                font-weight: 600;
+                margin: 0;
+                color: var(--text-color);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            p {
+                font-size: 0.85rem;
+                margin: 0.15rem 0 0;
+                color: var(--text-muted, #666);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    /* Custom scrollbar for modern look */
+    .group-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .group-list::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+    }
+}
