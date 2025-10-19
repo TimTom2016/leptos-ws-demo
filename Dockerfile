@@ -27,7 +27,7 @@ RUN apk add --no-cache libc-dev
 
 WORKDIR /app
 
-COPY --from=builder /work/target/release/leptos-ws-demo /app/leptos-ws-demo
+COPY --from=builder /work/target/release/server /app/server
 COPY --from=builder /work/target/site /app/site
 COPY --from=builder /work/Cargo.toml /app/
 
