@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT COUNT(*) AS \"count: i32\" FROM group_members WHERE group_id = ?1 AND user_id = ?2",
+  "describe": {
+    "columns": [
+      {
+        "name": "count: i32",
+        "ordinal": 0,
+        "type_info": "Integer"
+      }
+    ],
+    "parameters": {
+      "Right": 2
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "c59e59c81e343ebd856abcbfbc00a8b3853bdc46bfc5acd6808bfa07fd0a744c"
+}

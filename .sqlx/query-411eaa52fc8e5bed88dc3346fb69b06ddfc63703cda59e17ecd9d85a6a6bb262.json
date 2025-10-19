@@ -1,0 +1,44 @@
+{
+  "db_name": "SQLite",
+  "query": "SELECT id as 'id: uuid::Uuid', name, avatar_url, join_code, created_at as 'created_at: chrono::DateTime<chrono::Utc>' FROM groups WHERE id = ?1",
+  "describe": {
+    "columns": [
+      {
+        "name": "id: uuid::Uuid",
+        "ordinal": 0,
+        "type_info": "Blob"
+      },
+      {
+        "name": "name",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "avatar_url",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "join_code",
+        "ordinal": 3,
+        "type_info": "Text"
+      },
+      {
+        "name": "created_at: chrono::DateTime<chrono::Utc>",
+        "ordinal": 4,
+        "type_info": "Datetime"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true,
+      false
+    ]
+  },
+  "hash": "411eaa52fc8e5bed88dc3346fb69b06ddfc63703cda59e17ecd9d85a6a6bb262"
+}

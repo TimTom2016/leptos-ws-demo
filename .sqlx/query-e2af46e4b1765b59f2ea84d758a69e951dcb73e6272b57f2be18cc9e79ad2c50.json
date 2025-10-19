@@ -1,0 +1,20 @@
+{
+  "db_name": "SQLite",
+  "query": "UPDATE users SET username = ?1, password = ?2 WHERE id = ?3 RETURNING id as \"id: uuid::Uuid\"",
+  "describe": {
+    "columns": [
+      {
+        "name": "id: uuid::Uuid",
+        "ordinal": 0,
+        "type_info": "Blob"
+      }
+    ],
+    "parameters": {
+      "Right": 3
+    },
+    "nullable": [
+      false
+    ]
+  },
+  "hash": "e2af46e4b1765b59f2ea84d758a69e951dcb73e6272b57f2be18cc9e79ad2c50"
+}

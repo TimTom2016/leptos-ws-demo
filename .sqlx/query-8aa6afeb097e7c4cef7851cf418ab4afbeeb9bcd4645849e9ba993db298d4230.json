@@ -1,0 +1,74 @@
+{
+  "db_name": "SQLite",
+  "query": "\n            SELECT\n                g.id AS \"group_id: uuid::Uuid\",\n                g.name,\n                g.avatar_url,\n                g.join_code,\n                g.created_at AS \"group_created_at: chrono::DateTime<chrono::Utc>\",\n                m.id AS \"message_id: uuid::Uuid\",\n                m.group_id AS \"message_group_id: uuid::Uuid\",\n                m.user_id AS \"message_user_id: uuid::Uuid\",\n                m.content AS message_content,\n                m.created_at AS \"message_created_at: chrono::DateTime<chrono::Utc>\"\n            FROM groups g\n            JOIN group_members gm ON g.id = gm.group_id\n            LEFT JOIN messages m\n                ON m.id = (\n                    SELECT id\n                    FROM messages\n                    WHERE group_id = g.id\n                    ORDER BY created_at DESC\n                    LIMIT 1\n                )\n            WHERE gm.user_id = ?1;\n\n               ",
+  "describe": {
+    "columns": [
+      {
+        "name": "group_id: uuid::Uuid",
+        "ordinal": 0,
+        "type_info": "Blob"
+      },
+      {
+        "name": "name",
+        "ordinal": 1,
+        "type_info": "Text"
+      },
+      {
+        "name": "avatar_url",
+        "ordinal": 2,
+        "type_info": "Text"
+      },
+      {
+        "name": "join_code",
+        "ordinal": 3,
+        "type_info": "Text"
+      },
+      {
+        "name": "group_created_at: chrono::DateTime<chrono::Utc>",
+        "ordinal": 4,
+        "type_info": "Datetime"
+      },
+      {
+        "name": "message_id: uuid::Uuid",
+        "ordinal": 5,
+        "type_info": "Blob"
+      },
+      {
+        "name": "message_group_id: uuid::Uuid",
+        "ordinal": 6,
+        "type_info": "Blob"
+      },
+      {
+        "name": "message_user_id: uuid::Uuid",
+        "ordinal": 7,
+        "type_info": "Blob"
+      },
+      {
+        "name": "message_content",
+        "ordinal": 8,
+        "type_info": "Text"
+      },
+      {
+        "name": "message_created_at: chrono::DateTime<chrono::Utc>",
+        "ordinal": 9,
+        "type_info": "Datetime"
+      }
+    ],
+    "parameters": {
+      "Right": 1
+    },
+    "nullable": [
+      false,
+      false,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
+  },
+  "hash": "8aa6afeb097e7c4cef7851cf418ab4afbeeb9bcd4645849e9ba993db298d4230"
+}
