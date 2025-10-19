@@ -9,6 +9,7 @@ pub mod groups;
 pub mod header;
 pub mod include_svg;
 pub mod input;
+pub mod input_bar;
 pub mod multi_step;
 pub mod spinner;
 pub mod text_box;

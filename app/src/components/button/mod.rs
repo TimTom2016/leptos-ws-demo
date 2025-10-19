@@ -31,6 +31,7 @@ pub fn Button(
         class=buttons::BUTTON
         class=(buttons::PRIMARY, move || variant == ButtonVariant::Primary)
         class=(buttons::SECONDARY, move || variant == ButtonVariant::Secondary)
+        class=(buttons::TERTIARY, move || variant == ButtonVariant::Tertiary)
         class=(buttons::DANGER, move || variant == ButtonVariant::Danger)
         class=(buttons::SMALL, move || sizing == Sizing::Small)
         class=(buttons::NORMAL, move || sizing == Sizing::Normal)

@@ -41,6 +41,10 @@ pub fn InputField(
                         .map(|len| len.to_string())
                     placeholder=placeholder
                     prop:value=move || value.get()
+                    on:input=move |event| {
+                        let input = event_target_value(&event);
+                        value.set(input);
+                    }
                 />
                 </div>
     }

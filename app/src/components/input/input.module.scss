@@ -31,11 +31,11 @@
     &:focus {
         outline: none;
         border-color: var(--primary-color);
-        box-shadow: 0 0 0 2px #fecf6338;
+        box-shadow: 0 0 0 2px var(--primary-color);
     }
 
     &::placeholder {
-        color: var(--gray-200);
+        color: var(--text-muted);
     }
 }
 

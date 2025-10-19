@@ -11,7 +11,7 @@
           "extraArgs": ["--", "-W", "clippy::unwrap_used"]
         },
         "cargo": {
-          "features": "all"
+          "features": ["ssr", "hydrate"]
         },
         "inlayHints": {
           "maxLength": 20,

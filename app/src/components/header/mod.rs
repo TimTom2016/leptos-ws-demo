@@ -1,12 +1,10 @@
 use api::server_fn::logout::Logout;
-use leptos::{attribute_interceptor::AttributeInterceptor, prelude::*};
-use leptos_icons::Icon;
+use leptos::prelude::*;
 use leptos_router::components::A;
 
 use crate::{
     components::{
-        button::{Button, ButtonVariant},
-        dropdown::{dropdown_styles, Dropdown},
+        dropdown::{Dropdown, dropdown_styles},
         theme_switcher::ThemeSwitcher,
     },
     contexts::account_context::AccountContext,
@@ -77,7 +75,17 @@ pub fn Header<T: IntoView>(children: TypedChildren<T>) -> impl IntoView {
           <div class=header_styles::ACTIONS>
               <ThemeSwitcher/>
             <Dropdown label=move || view!{
-                <div class=header_styles::AVATAR style="background-image: url('https://robohash.org/test');"></div>
+                <Suspense>
+                    <Show when=move || account.logged_in() fallback=move || view!{
+                        <div class=header_styles::AVATAR style=move || format!("background-image: url('https://robohash.org/anonymous');")></div>
+                    }>
+                        {move || account
+                            .user()
+                            .and_then(|v| v.username().map(|v| v.to_string())).map(|username| view!{
+                            <div class=header_styles::AVATAR style=move || format!("background-image: url('https://robohash.org/{username}');")></div>
+                        })}
+                    </Show>
+                </Suspense>
             }>
                 <Suspense>
                     <Show when=move || !account.logged_in()>

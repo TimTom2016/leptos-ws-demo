@@ -1,12 +1,12 @@
 use components::header::Header;
 use leptos::prelude::*;
-use leptos_meta::{provide_meta_context, MetaTags, Stylesheet, Title};
+use leptos_meta::{MetaTags, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
+    StaticSegment,
     components::{Outlet, ParentRoute, Route, Router, Routes},
-    path, StaticSegment,
+    path,
 };
 use leptos_styling::StyleSheets;
-use thaw::ssr::SSRMountStyleProvider;
 
 use crate::{
     contexts::{account_context::AccountProvider, theme_context::ThemeContextProvider},
@@ -19,7 +19,6 @@ mod pages;
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
     view! {
-        <SSRMountStyleProvider>
         <!DOCTYPE html>
         <html lang="en">
             <head>
@@ -34,7 +33,6 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
                 <App/>
             </body>
         </html>
-        </SSRMountStyleProvider>
 
     }
 }
@@ -42,7 +40,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 #[component]
 pub fn App() -> impl IntoView {
     provide_meta_context();
-
+    leptos_ws::provide_websocket();
     view! {
         <Stylesheet id="leptos" href="/pkg/leptos-ws-demo.css"/>
 
@@ -54,6 +52,12 @@ pub fn App() -> impl IntoView {
                     <Header>
                             <Routes fallback=|| "Page not found.".into_view()>
                                 <Route path=path!("") view=HomePage/>
+                                <Route path=path!("chat") view=move || view!{
+                                    <main class="chat-area">
+                                        <pages::chat::ChatPage/>
+                                    </main>
+                                }/>
+
                                 <Route path=path!("login") view=LoginPage />
                                 <Route path=path!("signup") view=SignupPage />
                             </Routes>
@@ -68,11 +72,5 @@ pub fn App() -> impl IntoView {
 
 #[component]
 fn HomePage() -> impl IntoView {
-    view! {
-        <main class="chat-area">
-            <pages::home::HomePage/>
-
-        </main>
-
-    }
+    view! {}
 }

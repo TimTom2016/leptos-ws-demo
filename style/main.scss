@@ -20,12 +20,14 @@
     --background-dark: #101922;
     --text-light: #1f2937;
     --text-dark: #e5e7eb;
+    --text-muted-dark: #9ca3af;
+    --text-muted-light: #9ca3af;
     --gray-200: #e5e7eb;
     --gray-700: #374151;
     --gray-800: #1f2937;
     --gray-400: #9ca3af;
-    --border-light: rgba(229, 231, 235, 0.1);
-    --border-dark: rgba(55, 65, 81, 0.5);
+    --border-light: rgba(229, 231, 235, 1);
+    --border-dark: rgba(55, 65, 81, 1);
     --radius: 0.5rem;
     --radius-lg: 1rem;
     --radius-xl: 1.5rem;
@@ -37,11 +39,13 @@ html[data-theme="dark"] {
     --background: var(--background-dark);
     --text-color: var(--text-dark);
     --border-color: var(--border-dark);
+    --text-muted: var(--text-muted-dark);
 }
 html[data-theme="light"] {
     --background: var(--background-light);
     --text-color: var(--text-light);
     --border-color: var(--border-light);
+    --text-muted: var(--text-muted-light);
 }
 
 body {
@@ -159,6 +163,8 @@ html {
 
 .chat-area {
     display: flex;
+    height: 100%;
+    min-height: 0;
     flex-grow: 1;
 }
 
@@ -167,4 +173,41 @@ html {
     flex-direction: column;
     padding: 1rem;
     flex-grow: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in-1000 {
+    animation: fadeIn 1s ease-in-out;
+}
+.fade-in-500 {
+    animation: fadeIn 0.5s ease-in-out;
+}
+.fade-in-250 {
+    animation: fadeIn 0.25s ease-in-out;
+}
+.fade-out-1000 {
+    animation: fadeOut 1s ease-in-out;
+}
+.fade-out-500 {
+    animation: fadeOut 0.5s ease-in-out;
+}
+.fade-out-250 {
+    animation: fadeOut 0.25s ease-in-out;
 }

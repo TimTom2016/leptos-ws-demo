@@ -14,11 +14,17 @@ use std::{fmt::Display, str::FromStr};
 
 #[cfg(feature = "ssr")]
 use axum::extract::FromRef;
+#[cfg(feature = "ssr")]
+use leptos::config::LeptosOptions;
 use leptos::{
     prelude::{FromServerFnError, ServerFnError, ServerFnErrorErr},
     server,
     server_fn::codec::JsonEncoding,
 };
+#[cfg(feature = "ssr")]
+use leptos_axum::AxumRouteListing;
+#[cfg(feature = "ssr")]
+use leptos_ws::WsSignals;
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
 
@@ -26,16 +32,30 @@ use thiserror::Error;
 #[derive(Clone, FromRef)]
 pub struct AppState {
     pub pool: Pool,
+    pub routes: Option<Vec<AxumRouteListing>>,
+    pub options: LeptosOptions,
+    pub server_signals: WsSignals,
     pub user_repository: db::UserRepository,
+    pub group_repository: db::GroupRepository,
+    pub message_repository: db::MessageRepository,
 }
 #[cfg(feature = "ssr")]
 impl AppState {
-    pub async fn new(database_url: &str) -> Self {
+    pub async fn new(
+        database_url: &str,
+        options: LeptosOptions,
+        routes: Option<Vec<AxumRouteListing>>,
+    ) -> Self {
         let pool = Pool::connect(database_url).await.unwrap();
 
         Self {
             pool: pool.clone(),
+            routes,
+            options,
+            server_signals: WsSignals::new(),
             user_repository: db::UserRepository::new(pool.clone()),
+            group_repository: db::GroupRepository::new(pool.clone()),
+            message_repository: db::MessageRepository::new(pool.clone()),
         }
     }
 }

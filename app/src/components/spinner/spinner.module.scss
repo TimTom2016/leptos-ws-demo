@@ -38,7 +38,7 @@
     }
 
     .dot {
-        border-radius: var(--radius-full)
+        border-radius: var(--radius-full);
         animation: bounce 1.4s infinite ease-in-out both;
 
         &:nth-child(1) {

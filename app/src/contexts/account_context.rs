@@ -1,4 +1,4 @@
-use api::server_fn::settings::{get_account, Account};
+use api::server_fn::settings::{Account, get_account};
 use leptos::{context::Provider, prelude::*};
 #[derive(Clone, Debug, Copy)]
 pub struct AccountContext(Resource<Option<Account>>);
@@ -25,11 +25,15 @@ impl AccountContext {
             .flatten()
             .is_some_and(|v| v.is_logged_in())
     }
-
+    #[inline]
     pub fn user(&self) -> Option<Account> {
         self.0.get().flatten()
     }
 
+    #[inline]
+    pub fn user_untracked(&self) -> Option<Account> {
+        self.0.get_untracked().flatten()
+    }
     pub fn refresh(&self) {
         self.0.refetch();
     }

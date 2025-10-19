@@ -6,16 +6,23 @@
     transition: background-color 0.3s ease;
     &.primary {
         background-color: var(--primary);
-        color: black;
+        color: var(--text-on-primary);
         &:hover {
             background-color: var(--primary-hover);
         }
     }
     &.secondary {
         background-color: var(--secondary);
-        color: white;
+        color: var(--text-on-secondary);
         &:hover {
             background-color: var(--secondary-hover);
+        }
+    }
+    &.tertiary {
+        background-color: var(--tertiary);
+        color: var(--text-on-tertiary);
+        &:hover {
+            background-color: var(--tertiary-hover);
         }
     }
     &.danger {

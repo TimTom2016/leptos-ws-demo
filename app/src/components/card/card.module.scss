@@ -36,7 +36,7 @@
                 border: none;
                 border-radius: var(--radius-full);
                 padding: 0.25rem 0.5rem;
-                color: var(--gray-400);
+                color: var(--border-color);
                 cursor: pointer;
                 transition: background 0.2s;
 
@@ -57,7 +57,7 @@
         border-top: 1px solid var(--border-color);
         padding-top: 0.75rem;
         font-size: 0.875rem;
-        color: var(--gray-400);
+        color: var(--border-color);
     }
 
     /* Variant: Highlight / Primary */

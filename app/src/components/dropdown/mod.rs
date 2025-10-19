@@ -3,7 +3,7 @@ use leptos::{
     prelude::*,
 };
 use leptos_styling::style_sheet;
-use leptos_use::{on_click_outside, on_click_outside_with_options, OnClickOutsideOptions};
+use leptos_use::{OnClickOutsideOptions, on_click_outside_with_options};
 
 style_sheet!(
     dropdown_styles,
