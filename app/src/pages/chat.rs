@@ -3,6 +3,7 @@ use std::collections::VecDeque;
 use crate::components::{
     chat::{Chat, SelectGroup},
     groups::{Group, Groups},
+    header::HeaderContext,
 };
 use leptos::{either::Either, prelude::*};
 use leptos_router::{hooks::use_query, params::Params};
@@ -14,6 +15,10 @@ struct HomeQuery {
 
 #[component]
 pub fn ChatPage() -> impl IntoView {
+    let header = expect_context::<HeaderContext>();
+    Effect::new(move |_| {
+        header.switch_page(crate::components::header::Page::Chat);
+    });
     let reload_groups = Trigger::new();
     let query = use_query::<HomeQuery>();
     let group_id = move || {

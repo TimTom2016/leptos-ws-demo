@@ -18,9 +18,7 @@ leptos_styling::style_sheet!(
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Copy)]
 pub enum Page {
     Home,
-    Explore,
-    Notifications,
-    Messages,
+    Chat,
 }
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Copy)]
@@ -67,9 +65,7 @@ pub fn Header<T: IntoView>(children: TypedChildren<T>) -> impl IntoView {
 
           <nav>
             <A href="#" {..} class=(header_styles::ACTIVE,move || current_page.get() == Page::Home)>Home</A>
-            <A href="#" {..} class=(header_styles::ACTIVE,move || current_page.get() == Page::Explore)>Explore</A>
-            <A href="#" {..} class=(header_styles::ACTIVE,move || current_page.get() == Page::Notifications)>Notifications</A>
-            <A href="#" {..} class=(header_styles::ACTIVE,move || current_page.get() == Page::Messages)>Messages</A>
+            <A href="chat" {..} class=(header_styles::ACTIVE,move || current_page.get() == Page::Chat)>Chat</A>
           </nav>
 
           <div class=header_styles::ACTIONS>

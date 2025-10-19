@@ -2311,7 +2311,9 @@ dependencies = [
 
 [[package]]
 name = "leptos_ws"
-version = "0.9.0"
+version = "0.9.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b42fc0cd831fe6a5d169125cb6f4de1c606bda40ef2af2fc9f7b77f29014b28d"
 dependencies = [
  "async-trait",
  "dashmap",
