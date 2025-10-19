@@ -160,16 +160,22 @@ pub fn Chat(group_id: String) -> impl IntoView {
 
                     if writing.get_untracked() {
                         data.readers.remove(&username);
-                        data.writers.entry(username.clone()).or_insert(Person {
-                            name: username.clone(),
-                            last_activity: Utc::now(),
-                        });
+                        data.writers
+                            .entry(username.clone())
+                            .or_insert(Person {
+                                name: username.clone(),
+                                last_activity: Utc::now(),
+                            })
+                            .last_activity = Utc::now();
                     } else {
                         data.writers.remove(&username);
-                        data.readers.entry(username.clone()).or_insert(Person {
-                            name: username.clone(),
-                            last_activity: Utc::now(),
-                        });
+                        data.readers
+                            .entry(username.clone())
+                            .or_insert(Person {
+                                name: username.clone(),
+                                last_activity: Utc::now(),
+                            })
+                            .last_activity = Utc::now();
                     }
                 });
             },

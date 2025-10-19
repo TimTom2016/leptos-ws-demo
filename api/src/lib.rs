@@ -46,6 +46,22 @@ impl AppState {
         options: LeptosOptions,
         routes: Option<Vec<AxumRouteListing>>,
     ) -> Self {
+        use sqlx::{Sqlite, migrate::MigrateDatabase as _};
+
+        if !Sqlite::database_exists(&database_url)
+            .await
+            .unwrap_or(false)
+        {
+            use sqlx::migrate::MigrateDatabase as _;
+
+            log::info!("Creating database {}", database_url);
+            match Sqlite::create_database(&database_url).await {
+                Ok(_) => log::info!("Create db success"),
+                Err(error) => panic!("error: {}", error),
+            }
+        } else {
+            log::info!("Database already exists");
+        }
         let pool = Pool::connect(database_url).await.unwrap();
 
         Self {
